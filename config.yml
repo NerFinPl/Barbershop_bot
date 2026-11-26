@@ -1,0 +1,111 @@
+# ⚙️ Всё, что раньше правилось в config.py, живёт здесь.
+# Секреты можно оставить в .env — окружение имеет приоритет над этим файлом.
+
+bot:
+  token: ""                 # лучше задавать в .env: BOT_TOKEN
+  name: "Barber & Co"
+  timezone: "Europe/Moscow"  # важно для слотов и напоминаний
+  currency: "BYN"
+  admins: []                 # telegram user_id; или ADMINS=111,222 в .env
+  support_username: "barber_support"
+
+shop:
+  name: "Barber & Co"
+  tagline: "Барбершоп, в который возвращаются"
+  address: "г. Минск, ул. Немига 12, 2 этаж"
+  phone: "+375 29 123-45-67"
+  work_hours: "Ежедневно · 10:00 - 21:00"
+  instagram: "https://instagram.com/barber.co"
+  map_url: "https://yandex.by/maps/"
+  about: |
+    🔹 <b>Barber &amp; Co</b> - 5 лет стрижём так, чтобы возвращались друзьями.
+    🔹 Кофе, винил и никакой спешки - на всё про всё час.
+    🔹 Работаем на American Crew и Reuzel, инструмент стерилизуем после каждого гостя.
+    🔹 Мы в 3 минутах от метро, есть парковка.
+
+database:
+  type: sqlite               # sqlite | mysql
+  sqlite_path: barber.db
+  mysql:
+    host: 127.0.0.1
+    port: 3306
+    user: barber
+    password: barber
+    database: barber
+
+booking:
+  work_start: "10:00"
+  work_end: "21:00"
+  slot_step: 30              # шаг сетки, минуты
+  days_ahead: 14             # на сколько дней вперёд показываем календарь
+  late_options: [5, 10, 15, 20]
+
+reminders:
+  enabled: true
+  hours_before: 3
+  poll_minutes: 5
+
+payments:
+  onsite: true
+  online:
+    enabled: false
+    provider: yookassa
+
+# Цена привязана к услуге, а не к мастеру. Новая услуга = новый блок ниже.
+services:
+  haircut:
+    name: "Мужская стрижка"
+    emoji: "✂️"
+    price: 45
+    duration: 45
+    description: "Классика, фейд или что-то своё - обсуждаем и делаем под ваш стиль."
+  haircut_vip:
+    name: "Стрижка + укладка"
+    emoji: "💈"
+    price: 65
+    duration: 60
+    description: "Полный образ: стрижка, мытьё, укладка и стайлинг домой."
+  beard:
+    name: "Оформление бороды"
+    emoji: "🧔"
+    price: 30
+    duration: 30
+    description: "Контур, триммер, опасная бритва - по классике."
+  shave:
+    name: "Королевское бритьё"
+    emoji: "🪒"
+    price: 40
+    duration: 45
+    description: "Горячие полотенца, прешейв, опасная бритва. Ритуал, а не процедура."
+  complex:
+    name: "Стрижка + борода"
+    emoji: "🔥"
+    price: 70
+    duration: 75
+    description: "Любимый набор постоянных гостей: голова и борода за один визит."
+  kids:
+    name: "Детская стрижка"
+    emoji: "🧒"
+    price: 30
+    duration: 30
+    description: "До 12 лет. Мультики и терпение мастера включены."
+
+masters:
+  artem:
+    name: "Артём"
+    emoji: "💈"
+    specialization: "Фейды и классика"
+    experience: 7
+    services: [haircut, haircut_vip, beard, complex, kids]
+  dima:
+    name: "Дима"
+    emoji: "🪒"
+    specialization: "Бритьё и борода"
+    experience: 5
+    services: [haircut, beard, shave, complex, kids]
+  kirill:
+    name: "Кирилл"
+    emoji: "✂️"
+    specialization: "Текстурные стрижки"
+    experience: 4
+    services: [haircut, haircut_vip, shave, complex]
