@@ -1,0 +1,54 @@
+# 🎁 Промокоды. Ключ — сам код, он же нормализуется в верхний регистр.
+#
+# type: percent — скидка в процентах от суммы, fixed — фиксированная сумма.
+# max_uses: 0 — без ограничения по общему числу применений.
+# max_uses_per_user: 0 — без ограничения на клиента.
+# Даты в формате YYYY-MM-DD, обе границы необязательны.
+
+promocodes:
+  BARBER10:
+    type: percent
+    value: 10
+    description: "−10% на любую услугу"
+    active: true
+    max_uses: 0
+    max_uses_per_user: 1
+    min_amount: 0
+
+  FIRSTVISIT:
+    type: fixed
+    value: 15
+    description: "−15 BYN на первый визит"
+    active: true
+    max_uses: 200
+    max_uses_per_user: 1
+    min_amount: 40
+
+  BEARD20:
+    type: percent
+    value: 20
+    description: "−20% на оформление бороды"
+    active: true
+    valid_until: "2026-12-31"
+    max_uses: 300
+    max_uses_per_user: 2
+    min_amount: 0
+
+  OLDSTOCK:
+    type: percent
+    value: 30
+    description: "Архивная акция"
+    active: false
+    max_uses: 10
+    max_uses_per_user: 1
+    min_amount: 0
+
+  SUMMER2024:
+    type: fixed
+    value: 20
+    description: "Летняя акция 2024 (завершена)"
+    active: true
+    valid_until: "2024-09-01"
+    max_uses: 0
+    max_uses_per_user: 1
+    min_amount: 0
